@@ -73,9 +73,9 @@ Object.assign(View, {
   loadCustomColors() {
     try {
       const saved = JSON.parse(localStorage.getItem("portfolio-custom-colors")) || { green: "#20ef4f", cyan: "#37f495", line: "#164220" };
-      document.documentElement.style.setProperty("--green", saved.green);
-      document.documentElement.style.setProperty("--cyan", saved.cyan);
-      document.documentElement.style.setProperty("--line", saved.line);
+      document.body.style.setProperty("--green", saved.green);
+      document.body.style.setProperty("--cyan", saved.cyan);
+      document.body.style.setProperty("--line", saved.line);
       if (this.els.customGreen) this.els.customGreen.value = saved.green;
       if (this.els.customCyan) this.els.customCyan.value = saved.cyan;
       if (this.els.customLine) this.els.customLine.value = saved.line;
@@ -83,15 +83,15 @@ Object.assign(View, {
   },
 
   clearCustomColors() {
-    document.documentElement.style.removeProperty("--green");
-    document.documentElement.style.removeProperty("--cyan");
-    document.documentElement.style.removeProperty("--line");
+    document.body.style.removeProperty("--green");
+    document.body.style.removeProperty("--cyan");
+    document.body.style.removeProperty("--line");
   },
 
   saveCustomColors(green, cyan, line) {
-    document.documentElement.style.setProperty("--green", green);
-    document.documentElement.style.setProperty("--cyan", cyan);
-    document.documentElement.style.setProperty("--line", line);
+    document.body.style.setProperty("--green", green);
+    document.body.style.setProperty("--cyan", cyan);
+    document.body.style.setProperty("--line", line);
     try {
       localStorage.setItem("portfolio-custom-colors", JSON.stringify({ green, cyan, line }));
     } catch {}
