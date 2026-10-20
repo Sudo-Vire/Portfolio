@@ -1,0 +1,338 @@
+﻿/* Cyber Minesweeper Arcade App Icon & Modal Styles */
+.minesweeper-app-icon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  pointer-events: auto;
+  width: 100%;
+}
+
+.minesweeper-app-icon-card:hover {
+  border: none;
+  transform: translateY(-3px);
+  box-shadow: none;
+}
+
+.minesweeper-app-icon {
+  width: 72px;
+  height: 72px;
+  background: var(--ink);
+  border: 1px solid var(--green);
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 0 10px color-mix(in srgb, var(--green) 15%, transparent);
+  position: relative;
+  pointer-events: none;
+}
+
+.minesweeper-icon-canvas {
+  width: 56px;
+  height: 56px;
+  display: block;
+  pointer-events: none;
+}
+
+.minesweeper-icon-label {
+  font-family: var(--display);
+  font-size: 16px;
+  color: var(--paper);
+  margin: 0;
+  pointer-events: none;
+}
+
+/* Modal Overlay */
+.minesweeper-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 11, 10, 0.85);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.minesweeper-modal-overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.minesweeper-modal-container {
+  background: var(--panel);
+  border: 1px solid var(--cyan);
+  width: 100%;
+  max-width: 480px;
+  max-height: 96vh;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px color-mix(in srgb, var(--cyan) 10%, transparent);
+  box-sizing: border-box;
+}
+
+.minesweeper-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 6px;
+}
+
+.minesweeper-title {
+  font-family: var(--display);
+  font-size: 15px;
+  color: var(--paper);
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.minesweeper-close-btn {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  width: 26px;
+  height: 26px;
+  font-size: 16px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all 0.2s ease;
+}
+
+.minesweeper-close-btn:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.minesweeper-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--ink);
+  border: 1px solid var(--line);
+  padding: 6px 12px;
+}
+
+.minesweeper-stat {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--cyan);
+  letter-spacing: 0.05em;
+}
+
+.minesweeper-face-btn {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  font-size: 16px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all 0.1s ease;
+}
+
+.minesweeper-face-btn:hover {
+  border-color: var(--cyan);
+  transform: scale(1.05);
+}
+
+.minesweeper-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--ink);
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+}
+
+.ms-setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.ms-size-btns {
+  display: flex;
+  gap: 4px;
+}
+
+.ms-size-btn {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 3px 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ms-size-btn:hover,
+.ms-size-btn.active {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: color-mix(in srgb, var(--cyan) 10%, var(--panel));
+}
+
+.ms-mode-btn {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--cyan);
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 2px 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ms-mode-btn:hover {
+  border-color: var(--cyan);
+  background: color-mix(in srgb, var(--cyan) 15%, var(--panel));
+}
+
+.ms-custom-panel {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 8px;
+  margin-top: 4px;
+}
+
+.ms-custom-panel.is-active {
+  display: flex;
+}
+
+.ms-custom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.ms-custom-input {
+  background: var(--ink);
+  border: 1px solid var(--line);
+  color: var(--cyan);
+  font-family: var(--mono);
+  font-size: 11px;
+  width: 55px;
+  padding: 2px 4px;
+  text-align: center;
+}
+
+.ms-custom-apply {
+  background: color-mix(in srgb, var(--cyan) 15%, var(--ink));
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 4px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.ms-custom-apply:hover {
+  background: var(--cyan);
+  color: var(--ink);
+}
+
+.ms-bombs-slider {
+  flex: 1;
+  accent-color: var(--cyan);
+  cursor: pointer;
+  height: 4px;
+}
+
+.ms-bombs-val {
+  color: var(--cyan);
+  font-weight: 700;
+  min-width: 32px;
+  text-align: right;
+}
+
+.minesweeper-board-wrap {
+  background: var(--ink);
+  border: 1px solid var(--line);
+  padding: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  max-height: 320px;
+}
+
+.minesweeper-board {
+  display: grid;
+  gap: 2px;
+}
+
+.ms-cell {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  font-family: var(--mono);
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.1s ease, border-color 0.1s ease;
+}
+
+.ms-cell:hover:not(.revealed):not(.flagged) {
+  border-color: var(--cyan);
+  background: color-mix(in srgb, var(--cyan) 15%, var(--panel));
+}
+
+.ms-cell.revealed {
+  background: var(--ink);
+  border-color: var(--line);
+  cursor: default;
+}
+
+.ms-cell.flagged {
+  color: #ff2244;
+}
+
+.ms-cell.mine {
+  background: rgba(255, 34, 68, 0.2);
+  border-color: #ff2244;
+}
+
+.ms-cell[data-count="1"] { color: var(--cyan); }
+.ms-cell[data-count="2"] { color: var(--green); }
+.ms-cell[data-count="3"] { color: #f1c40f; }
+.ms-cell[data-count="4"] { color: #e67e22; }
+.ms-cell[data-count="5"],
+.ms-cell[data-count="6"],
+.ms-cell[data-count="7"],
+.ms-cell[data-count="8"] { color: #ff2244; }
+
+.minesweeper-controls-hint {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  text-align: center;
+  margin: 0;
+  letter-spacing: 0.05em;
+}

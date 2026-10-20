@@ -1,0 +1,66 @@
+html[lang="es"] .folder-items:empty::before { content: "SIN SEÑAL // SELECCIONA UN DIRECTORIO"; }
+.experience-explorer { position: relative; display: grid; grid-template-columns: minmax(185px, .7fr) minmax(0, 1.3fr); gap: 20px; align-items: stretch; }
+.experience-folders { position: relative; display: grid; align-content: start; gap: 18px; padding-top: 10px; }
+.folder-panel-heading, .folder-entry h4 { text-shadow: 0 0 7px color-mix(in srgb, var(--green) 45%, transparent); }
+@keyframes crt-flicker { 0% { opacity: 1; } 12% { opacity: .78; } 13% { opacity: 1; } 47% { opacity: .9; } 48% { opacity: 1; } 71% { opacity: .82; } 72% { opacity: 1; } }
+@keyframes crt-roll { 0% { top: -30%; opacity: .35; } 70%, 100% { top: 110%; opacity: .35; } }
+.folder-panel { position: relative; display: flex; flex-direction: column; min-height: 270px; overflow: hidden; transform: scaleY(var(--crt-s)); border: 1px solid var(--line); border-radius: 4px; background: #080d09; box-shadow: inset 0 0 28px color-mix(in srgb, var(--green) 9%, transparent); }
+.folder-items:empty { align-content: center; justify-items: center; }
+.folder-items:empty::before { color: var(--muted); font-size: 9px; letter-spacing: .12em; text-align: center; content: "NO SIGNAL // SELECT A DIRECTORY"; animation: crt-flicker 3.2s steps(1, end) infinite; }
+.folder-panel::before, .folder-panel::after { position: absolute; z-index: 2; inset: 0; pointer-events: none; content: ""; }
+.folder-panel::before { background: repeating-linear-gradient(to bottom, transparent 0 3px, rgba(0, 0, 0, .3) 3px 4px), radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, .55) 100%); animation: crt-flicker 3.2s steps(1, end) infinite; }
+.folder-panel::after { top: -30%; bottom: auto; height: 30px; background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--green) 24%, transparent), transparent); opacity: 0; }
+.experience-explorer.is-opening .folder-panel { animation: crt-collapse 1s both, crt-power-on .7s steps(14, end) .45s forwards; }
+.experience-explorer.is-opening .folder-items { animation: crt-body-swap 1s both; }
+.experience-explorer.is-opening .folder-panel::after { animation: crt-sweep .8s ease-out .6s both, crt-roll 6s linear 1.6s infinite; }
+.folder-panel-heading, .folder-items { position: relative; z-index: 1; }
+.folder-panel-heading { min-height: 39px; flex-shrink: 0; transform-origin: top; transform: scaleY(calc(1 / var(--crt-s))); display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 0 14px; border-bottom: 1px solid var(--line); color: var(--green); font-size: 9px; }
+.folder-panel-heading span:last-child { color: var(--muted); font-size: 7px; }
+.folder-items { display: grid; flex: 1; align-content: start; gap: 9px; padding: 13px; }
+.folder-entry { position: relative; display: block; min-width: 0; padding: 12px; border-left: 1px solid var(--green-dim); background: var(--panel-raised); color: var(--paper); text-decoration: none; opacity: 0; clip-path: inset(0 100% 0 0); }
+.folder-items.is-opening .folder-entry { animation: folder-type-in .9s steps(32, end) calc(.3s + var(--entry-index) * 180ms) forwards; }
+@keyframes folder-type-in { 0% { opacity: .45; clip-path: inset(0 100% 0 0); } 100% { opacity: 1; clip-path: inset(0 0 0 0); } }
+@property --crt-s { syntax: "<number>"; inherits: true; initial-value: 1; }
+@keyframes crt-collapse {
+  0% { --crt-s: 1; animation-timing-function: ease-in-out; }
+  35%, 45% { --crt-s: .17; animation-timing-function: ease-in-out; }
+  75%, 100% { --crt-s: 1; }
+}
+@keyframes crt-body-swap {
+  0%, 12% { opacity: 1; }
+  30%, 50% { opacity: 0; }
+  75%, 100% { opacity: 1; }
+}
+@keyframes crt-power-on {
+  0% { filter: brightness(.2) contrast(1.4); }
+  8% { filter: brightness(3.5) contrast(1.2); }
+  16% { filter: brightness(.35); }
+  28% { filter: brightness(2.2); }
+  40% { filter: brightness(.6); }
+  58% { filter: brightness(1.6); }
+  75% { filter: brightness(.9); }
+  88% { filter: brightness(1.2); }
+  100% { filter: brightness(1); }
+}
+@keyframes crt-sweep {
+  0% { top: 0; opacity: .9; }
+  100% { top: 100%; opacity: 0; }
+}
+.folder-entry h4 { margin: 7px 0 5px; color: var(--paper); font: 500 14px var(--display); }
+.folder-entry p { margin: 0; color: #aeb5ad; font-size: 9px; line-height: 1.6; }
+.folder-entry .card-meta { display: inline-block; margin-top: 8px; }
+.folder-entry .card-cta { display: inline-block; margin: 8px 0 0 14px; color: var(--green); font-size: 8px; }
+@media (max-width: 760px) {
+  .experience-explorer { grid-template-columns: 165px minmax(0, 1fr); gap: 12px; }
+  .folder-panel { min-height: 230px; }
+}
+@media (max-width: 460px) {
+  .experience-explorer { grid-template-columns: 1fr; }
+  .experience-folders { position: static; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; }
+  .folder-panel { min-height: 220px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .experience-explorer.is-opening .folder-panel, .experience-explorer.is-opening .folder-panel::after { animation: none; }
+  .folder-items.is-opening .folder-entry { animation-duration: .01ms; animation-delay: 0ms; }
+  .folder-panel::before { animation: none; }
+}

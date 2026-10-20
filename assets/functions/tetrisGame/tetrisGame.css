@@ -1,0 +1,129 @@
+
+.tetris-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 11, 10, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.tetris-modal-overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.tetris-modal-container {
+  background: var(--surface);
+  border: 1px solid var(--cyan);
+  box-shadow: 0 0 30px rgba(145, 243, 168, 0.2);
+  width: 100%;
+  max-width: 440px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tetris-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.75rem;
+}
+
+.tetris-title {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--cyan);
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.tetris-close-btn {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  transition: all 0.2s;
+}
+
+.tetris-close-btn:hover {
+  background: var(--cyan);
+  color: var(--ink);
+  border-color: var(--cyan);
+}
+
+.tetris-stats {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink);
+  background: var(--ink);
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--line);
+}
+
+.tetris-game-canvas-wrap {
+  border: 1px solid var(--cyan);
+  box-shadow: 0 0 10px rgba(145, 243, 168, 0.1);
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tetris-canvas {
+  display: block;
+  image-rendering: pixelated;
+}
+
+.tetris-controls-hint {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  text-align: center;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.tetris-touch-pad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.tetris-touch-btn {
+  background: var(--ink);
+  border: 1px solid var(--line);
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0.6rem 0;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tetris-touch-btn:hover, .tetris-touch-btn:active {
+  background: var(--cyan);
+  color: var(--ink);
+  border-color: var(--cyan);
+}

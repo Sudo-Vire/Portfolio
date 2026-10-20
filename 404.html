@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#090b0a" />
+    <meta name="robots" content="noindex" />
+    <title>404 | Victor Reguillo</title>
+    <link rel="stylesheet" href="assets/functions/orbs/themes/themes.css" />
+    <style>
+      :root { color-scheme: dark; --ink: #090b0a; --panel: #0d100e; --line: #2b322d; --muted: #858c85; --paper: #e9eee8; --green: #20ef4f; --green-dim: #087d2a; --grid-line: rgba(32, 239, 79, .025); --mono: "DM Mono", "Courier New", monospace; --display: "Space Grotesk", "Trebuchet MS", sans-serif; }
+      * { box-sizing: border-box; }
+      html, body { width: 100vw; height: 100vh; overflow: hidden; margin: 0; padding: 0; background: var(--ink); }
+      body { display: grid; place-items: center; padding: 20px; background-color: var(--ink); background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size: 48px 48px; color: var(--paper); font-family: var(--mono); }
+      main { width: min(1000px, 100%); border: 1px solid var(--line); background: var(--panel); padding: 40px 36px; }
+      .game-box { margin-top: 22px; border: 1px solid var(--line); background: var(--ink); line-height: 0; }
+      canvas { display: block; width: 100%; height: auto; touch-action: manipulation; }
+      .bar { margin: 0 0 22px; color: var(--green); font-size: 12px; overflow-wrap: anywhere; }
+      h1 { margin: 0; color: var(--green); font-family: var(--display); font-size: clamp(64px, 20vw, 110px); line-height: 1; text-shadow: 0 0 18px color-mix(in srgb, var(--green) 35%, transparent); }
+      p { margin: 14px 0 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+      .err { color: var(--paper); }
+      a { display: inline-block; margin-top: 24px; padding: 10px 14px; border: 1px solid var(--green); color: var(--green); font-size: 12px; text-decoration: none; }
+      a:hover, a:focus-visible { background: var(--green); color: var(--ink); outline: none; }
+      .cursor { display: inline-block; width: 8px; height: 14px; margin-left: 4px; background: var(--green); vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+      @keyframes blink { 50% { opacity: 0; } }
+      @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="bar">guest@portfolio:~$ cd <span id="path"></span></p>
+      <h1>404</h1>
+      <p class="err" id="error"></p>
+      <p id="hint"></p>
+      <p id="game-hint"></p>
+      <div class="game-box"><canvas id="dino-canvas" width="900" height="260" aria-label="Dino game"></canvas></div>
+      <a href="index.html" id="home"></a><span class="cursor" aria-hidden="true"></span>
+    </main>
+    <script>
+      const read = (key) => { try { return localStorage.getItem(key); } catch { return null; } };
+      const savedTheme = read("portfolio-theme");
+      const theme = savedTheme === "solar" ? "claude" : savedTheme;
+      document.body.dataset.theme = ["hacker", "cyberpunk", "claude"].includes(theme) ? theme : "hacker";
+      const es = read("portfolio-language") !== "en";
+      document.documentElement.lang = es ? "es" : "en";
+      document.getElementById("path").textContent = new URLSearchParams(location.search).get("from") || location.pathname;
+      document.getElementById("error").textContent = es ? "bash: cd: no existe el archivo o directorio" : "bash: cd: no such file or directory";
+      document.getElementById("hint").textContent = es ? "La página que buscas no existe o se ha movido." : "The page you are looking for does not exist or has moved.";
+      document.getElementById("game-hint").textContent = es ? "Mientras tanto: ESPACIO / ↑ saltar, ↓ agacharse. En móvil: toca arriba para saltar y mantén abajo para agacharte." : "Meanwhile: SPACE / ↑ jump, ↓ duck. On mobile: tap the top to jump, hold the bottom to duck.";
+      document.getElementById("home").textContent = es ? "[ volver al inicio ]" : "[ back to home ]";
+    </script>
+    <script type="importmap">
+      {
+        "imports": {
+          "assets/": "./assets/"
+        }
+      }
+    </script>
+    <script type="module" src="assets/functions/dinoGame/dinoGame.js"></script>
+  </body>
+</html>

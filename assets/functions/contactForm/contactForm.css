@@ -1,0 +1,24 @@
+.contact-layout { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(24px, 5vw, 68px); align-items: start; }
+.contact-details { padding-top: 5px; }
+.contact-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 12px 0 27px; }
+.contact-chip { display: flex; align-items: center; min-height: 40px; padding: 0 11px; border: 1px solid var(--line); color: #c3c9c2; font-size: 10px; transition: border-color .18s ease, color .18s ease; }
+.contact-chip.is-option-selected { border-color: var(--green-dim); color: var(--green); }
+.contact-email-label { margin-bottom: 8px; color: var(--muted); font-size: 8px; }
+.contact-email { display: inline-flex; align-items: center; gap: 12px; color: var(--green); font-size: 12px; }
+.contact-email span { font-size: 16px; }
+.contact-form { padding: 18px; border: 1px solid var(--line); background: var(--panel-raised); }
+.contact-form h3 { margin: 0 0 17px; color: var(--green); font: 500 13px var(--mono); }
+.contact-form label { display: block; margin: 0 0 13px; color: var(--muted); font-size: 9px; }
+.contact-form input:not(.honeypot), .contact-form textarea { display: block; width: 100%; margin-top: 6px; padding: 10px; border: 1px solid var(--line); border-radius: 0; background: var(--ink); color: var(--paper); font: 11px var(--mono); }
+.contact-form textarea { min-height: 85px; resize: vertical; }
+.contact-form input:focus, .contact-form textarea:focus { outline: 1px solid var(--green-dim); border-color: var(--green-dim); }
+.honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; }
+.form-footer { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.send-button { padding: 10px 13px; border: 1px solid var(--green-dim); background: transparent; color: var(--green); cursor: pointer; font: 9px var(--mono); }
+.send-button.is-option-selected { background: rgba(157, 242, 173, .08); }
+.send-button:disabled { opacity: .5; cursor: wait; }
+#form-status { margin: 0; color: var(--cyan); font-size: 9px; }
+@media (max-width: 760px) {
+  .contact-layout { grid-template-columns: 1fr; gap: 21px; }
+  .contact-list { margin-bottom: 14px; }
+}

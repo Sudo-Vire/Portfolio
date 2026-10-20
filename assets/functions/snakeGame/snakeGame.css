@@ -1,0 +1,267 @@
+/* Cyber Snake Arcade App Icon & Modal Styles */
+.juegos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+  pointer-events: auto;
+}
+
+.snake-app-icon-card,
+.minesweeper-app-icon-card,
+.tetris-app-icon-card,
+.pong-app-icon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  border: none;
+  padding: 12px;
+  cursor: default;
+  transition: all 0.2s ease;
+  text-align: center;
+  pointer-events: auto;
+  width: 100%;
+}
+
+.snake-app-icon-card:has(.snake-icon-canvas:hover),
+.minesweeper-app-icon-card:has(.minesweeper-icon-canvas:hover),
+.tetris-app-icon-card:has(.tetris-icon-canvas:hover),
+.pong-app-icon-card:has(.pong-icon-canvas:hover) {
+  border: none;
+  transform: translateY(-3px);
+  box-shadow: none;
+}
+
+.snake-app-icon,
+.minesweeper-app-icon,
+.tetris-app-icon,
+.pong-app-icon {
+  width: 72px;
+  height: 72px;
+  background: var(--ink);
+  border: 1px solid var(--green);
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 0 10px color-mix(in srgb, var(--green) 15%, transparent);
+  position: relative;
+  pointer-events: auto;
+}
+
+.snake-icon-canvas,
+.minesweeper-icon-canvas,
+.tetris-icon-canvas,
+.pong-icon-canvas {
+  width: 56px;
+  height: 56px;
+  display: block;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.snake-icon-canvas:hover,
+.minesweeper-icon-canvas:hover,
+.tetris-icon-canvas:hover,
+.pong-icon-canvas:hover {
+  transform: scale(1.08);
+}
+
+.snake-icon-label,
+.minesweeper-icon-label,
+.tetris-icon-label,
+.pong-icon-label {
+  font-family: var(--display);
+  font-size: 16px;
+  color: var(--paper);
+  margin: 0;
+  pointer-events: none;
+}
+
+.snake-icon-sub {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--green);
+  letter-spacing: 0.05em;
+  pointer-events: none;
+}
+
+/* Other folder entries in juegos */
+.folder-entry {
+  position: relative;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.folder-entry:hover {
+  border-color: var(--green);
+  transform: translateY(-2px);
+}
+
+.card-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--green);
+  letter-spacing: 0.05em;
+}
+
+.folder-entry h4 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 20px;
+  color: var(--paper);
+}
+
+.folder-entry p {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.card-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.card-cta {
+  margin-top: auto;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--green);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Snake Game Modal Overlay */
+.snake-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 11, 10, 0.85);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.snake-modal-overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.snake-modal-container {
+  width: min(500px, 100%);
+  background: var(--panel);
+  border: 1px solid var(--green);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--green) 20%, transparent);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.snake-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+
+.snake-title {
+  font-family: var(--display);
+  font-size: 18px;
+  color: var(--green);
+  margin: 0;
+}
+
+.snake-close-btn {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 14px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.snake-close-btn:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.snake-stats {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--green);
+}
+
+.snake-game-canvas-wrap {
+  border: 1px solid var(--line);
+  background: var(--ink);
+  position: relative;
+  aspect-ratio: 1;
+}
+
+.snake-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.snake-controls-hint {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.snake-touch-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.snake-touch-btn {
+  background: var(--ink);
+  border: 1px solid var(--line);
+  color: var(--green);
+  font-family: var(--mono);
+  font-size: 16px;
+  padding: 12px 0;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.snake-touch-btn:active {
+  background: var(--green-dim);
+  color: var(--paper);
+}
+
+.snake-btn-up { grid-column: 2; }
+.snake-btn-left { grid-column: 1; grid-row: 2; }
+.snake-btn-down { grid-column: 2; grid-row: 2; }
+.snake-btn-right { grid-column: 3; grid-row: 2; }
