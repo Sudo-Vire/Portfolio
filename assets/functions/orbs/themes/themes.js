@@ -19,6 +19,13 @@ Object.assign(View, {
     Model.state.theme = theme.id;
     document.body.dataset.theme = theme.id;
     this.els.themeCurrent.textContent = theme.label;
+    
+    if (theme.id === "custom") {
+      this.loadCustomColors();
+    } else {
+      this.clearCustomColors();
+    }
+
     if (persist) {
       this.els.themePicker.dataset.selectedTheme = theme.id;
       if (updateChoices) this.updateThemeChoices(theme.id);
@@ -28,6 +35,68 @@ Object.assign(View, {
     }
   },
 
+  initCustomTheme() {
+    if (this.els.customGreen) {
+      const update = () => {
+        this.saveCustomColors(
+          this.els.customGreen.value,
+          this.els.customCyan.value,
+          this.els.customLine.value
+        );
+      };
+      this.els.customGreen.addEventListener("input", update);
+      this.els.customCyan.addEventListener("input", update);
+      this.els.customLine.addEventListener("input", update);
+    }
+
+    if (this.els.customClose) {
+      this.els.customClose.addEventListener("click", () => {
+        this.setTheme("hacker", true);
+      });
+    }
+
+    if (this.els.customReset) {
+      this.els.customReset.addEventListener("click", () => {
+        const defaults = { green: "#20ef4f", cyan: "#37f495", line: "#164220" };
+        this.saveCustomColors(defaults.green, defaults.cyan, defaults.line);
+        if (this.els.customGreen) this.els.customGreen.value = defaults.green;
+        if (this.els.customCyan) this.els.customCyan.value = defaults.cyan;
+        if (this.els.customLine) this.els.customLine.value = defaults.line;
+      });
+    }
+
+    if (this.getSavedTheme() === "custom") {
+      this.loadCustomColors();
+    }
+  },
+
+  loadCustomColors() {
+    try {
+      const saved = JSON.parse(localStorage.getItem("portfolio-custom-colors")) || { green: "#20ef4f", cyan: "#37f495", line: "#164220" };
+      document.documentElement.style.setProperty("--green", saved.green);
+      document.documentElement.style.setProperty("--cyan", saved.cyan);
+      document.documentElement.style.setProperty("--line", saved.line);
+      if (this.els.customGreen) this.els.customGreen.value = saved.green;
+      if (this.els.customCyan) this.els.customCyan.value = saved.cyan;
+      if (this.els.customLine) this.els.customLine.value = saved.line;
+    } catch {}
+  },
+
+  clearCustomColors() {
+    document.documentElement.style.removeProperty("--green");
+    document.documentElement.style.removeProperty("--cyan");
+    document.documentElement.style.removeProperty("--line");
+  },
+
+  saveCustomColors(green, cyan, line) {
+    document.documentElement.style.setProperty("--green", green);
+    document.documentElement.style.setProperty("--cyan", cyan);
+    document.documentElement.style.setProperty("--line", line);
+    try {
+      localStorage.setItem("portfolio-custom-colors", JSON.stringify({ green, cyan, line }));
+    } catch {}
+  },
+
   updateThemeChoices(themeId) {
     this.els.themePicker.dataset.selectedTheme = themeId;
     const choices = Model.themes.filter((theme) => theme.id !== themeId);
@@ -35,7 +104,7 @@ Object.assign(View, {
       const theme = choices[index];
       button.dataset.themeChoice = theme.id;
       const localizedTheme = Model.locale === "es"
-        ? ({ HACKER: "Hacker", CYBERPUNK: "Cyberpunk", CLAUDE: "Claude" })[theme.label]
+        ? ({ HACKER: "Hacker", CYBERPUNK: "Cyberpunk", CLAUDE: "Claude", CUSTOM: "Personalizado" })[theme.label]
         : theme.label;
       const label = this.t("switchTheme").replace("{theme}", localizedTheme);
       button.setAttribute("aria-label", label);

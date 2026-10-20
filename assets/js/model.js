@@ -4,6 +4,7 @@ export const Model = {
     { id: "hacker", label: "HACKER" },
     { id: "cyberpunk", label: "CYBERPUNK" },
     { id: "claude", label: "CLAUDE" },
+    { id: "custom", label: "CUSTOM" },
   ],
   locale: "es",
   translations: {
@@ -36,6 +37,7 @@ export const Model = {
       name: "Name", email: "Your email", message: "Message", sendButton: "SEND MESSAGE",
       theme: "Theme", language: "Language", switchTheme: "Switch to {theme} theme",
       switchLanguage: "Switch language to {language}", spanish: "Spanish", english: "English",
+      customThemeTitle: "THEME CUSTOMIZER", resetDefaults: "Reset defaults",
       languageName: "English", portfolioDirectories: "Portfolio directories", quoteAuthor: "— Mieko Kawakami",
       photoAlt: "Victor Reguillo", photoCaption: "VICTOR REGUILLO <span>//</span> MADRID",
       comingSoon: "Coming Soon", viewRepository: "VIEW REPOSITORY", downloadCvLabel: "Download CV",

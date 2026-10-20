@@ -179,6 +179,23 @@
             <button class="theme-choice theme-third" id="theme-third" type="button" aria-label="Switch to Claude theme" title="Switch to Claude theme" data-theme-choice="claude">
               <span class="theme-orb theme-orb-third" aria-hidden="true"></span>
             </button>
+            <button class="theme-choice theme-fourth" id="theme-fourth" type="button" aria-label="Switch to Custom theme" title="Switch to Custom theme" data-theme-choice="custom">
+              <span class="theme-orb theme-orb-fourth" aria-hidden="true"></span>
+            </button>
+            <div class="custom-theme-panel" id="custom-theme-panel" aria-hidden="true">
+              <div class="custom-theme-header">
+                <span data-i18n="customThemeTitle">THEME CUSTOMIZER</span>
+                <button type="button" id="custom-theme-close" aria-label="Close">×</button>
+              </div>
+              <div class="custom-theme-inputs">
+                <label><span>Primary (--green)</span><input type="color" id="custom-color-green" value="#20ef4f"></label>
+                <label><span>Secondary (--cyan)</span><input type="color" id="custom-color-cyan" value="#37f495"></label>
+                <label><span>Line (--line)</span><input type="color" id="custom-color-line" value="#164220"></label>
+              </div>
+              <div class="custom-theme-footer">
+                <button type="button" id="custom-theme-reset" data-i18n="resetDefaults">Reset</button>
+              </div>
+            </div>
           </div>
           <div class="language-picker" aria-label="Language selector" data-i18n-aria="language">
             <span class="language-current" aria-hidden="true">
