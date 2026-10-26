@@ -354,7 +354,7 @@ Object.assign(View, {
       if (gameOver) {
         ctx.fillStyle = "rgba(9, 11, 10, 0.85)";
         ctx.fillRect(0, 0, WIDTH, HEIGHT);
-        let winText = p1Score >= 5 ? "PLAYER 1 WINS" : (gameMode === "vs_ai" ? "AI WINS // DEFEAT" : "PLAYER 2 WINS");
+        let winText = p1Score >= 5 ? "PLAYER 1 WINS" : (gameMode === "vs_ai" ? "CPU WINS // DEFEAT" : "PLAYER 2 WINS");
         ctx.fillStyle = p1Score >= 5 ? "#20ef4f" : "#ff2244";
         ctx.font = "bold 18px monospace";
         ctx.textAlign = "center";
