@@ -88,8 +88,8 @@ Object.assign(View, {
           </div>
           <p class="pong-controls-hint" id="pong-controls-hint">P1: W / S | P2: AI | SPACE: PAUSE</p>
           <div class="pong-touch-pad" id="pong-touch-pad">
-            <button class="pong-touch-btn" data-action="up">? P1 UP</button>
-            <button class="pong-touch-btn" data-action="down">? P1 DOWN</button>
+            <button class="pong-touch-btn" data-action="up">UP</button>
+            <button class="pong-touch-btn" data-action="down">DOWN</button>
           </div>
         </div>
       `;
