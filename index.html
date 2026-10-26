@@ -6,16 +6,6 @@
     <meta name="theme-color" content="#090b0a" />
     <meta name="description" content="Victor Reguillo, desarrollador full-stack especializado en aplicaciones web y ciberseguridad." />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://formsubmit.co data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline';" />
-    <script>
-      if (window.location.protocol === 'file:') {
-        window.addEventListener('DOMContentLoaded', () => {
-          const b = document.createElement('div');
-          b.style.cssText = 'position:fixed;bottom:0;left:0;width:100%;background:#d97706;color:#000;padding:12px 20px;font-family:monospace;font-size:13px;z-index:999999;display:flex;justify-content:space-between;align-items:center;box-shadow:0 -4px 12px rgba(0,0,0,0.5);';
-          b.innerHTML = '<span>⚠️ <strong>Aviso (file://):</strong> Estás abriendo el sitio directamente como archivo local. Los navegadores modernos (Opera, Chrome, etc.) bloquean los módulos ES en protocolo file://. Utiliza un servidor local (ej: <code>npx serve</code> o <code>python -m http.server</code>).</span><button onclick="this.parentElement.remove()" style="background:#000;color:#fff;border:none;padding:6px 12px;cursor:pointer;font-weight:bold;">Cerrar</button>';
-          document.body.appendChild(b);
-        });
-      }
-    </script>
     <title>Victor Reguillo | Portfolio</title>
     
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
@@ -46,14 +36,7 @@
     <link rel="stylesheet" href="assets/functions/contactForm/contactForm.css" />
     <link rel="stylesheet" href="assets/functions/Terminal/Terminal%20Styles.css" />
     <link rel="alternate" href="assets/Vire-CV.pdf" type="application/pdf" />
-    <script type="importmap">
-      {
-        "imports": {
-          "assets/": "./assets/"
-        }
-      }
-    </script>
-    <script type="module" src="assets/js/main.js"></script>
+    <script src="assets/js/bundle.js"></script>
   </head>
   <body data-screen="home">
     <div id="bios-boot-screen" class="bios-boot-screen">
