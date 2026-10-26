@@ -30,12 +30,6 @@ export const View = {
       languagePicker: document.querySelector(".language-picker"),
       languageCurrent: document.querySelector("#language-current"),
       languageChoice: document.querySelector("#language-choice"),
-      customThemePanel: document.querySelector("#custom-theme-panel"),
-      customGreen: document.querySelector("#custom-color-green"),
-      customCyan: document.querySelector("#custom-color-cyan"),
-      customLine: document.querySelector("#custom-color-line"),
-      customClose: document.querySelector("#custom-theme-close"),
-      customReset: document.querySelector("#custom-theme-reset"),
     };
 
     this.renderSkills(Model.skills);
@@ -43,7 +37,6 @@ export const View = {
     this.collapseExperienceFolder();
     this.renderContacts(Model.contacts);
     this.initContact();
-    this.initCustomTheme();
     this.setTheme(this.getSavedTheme(), false);
     this.updateThemeChoices(Model.state.theme);
     this.setLanguage(this.getSavedLanguage(), false);
@@ -243,7 +236,7 @@ export const View = {
         label.textContent = this.localized(item, "title");
 
         iconCard.append(iconBox, label);
-        canvas.addEventListener("click", () => {
+        iconCard.addEventListener("click", () => {
           if (Controller.openMinesweeperModal) Controller.openMinesweeperModal();
         });
 
@@ -269,7 +262,7 @@ export const View = {
         label.textContent = this.localized(item, "title");
 
         iconCard.append(iconBox, label);
-        canvas.addEventListener("click", () => {
+        iconCard.addEventListener("click", () => {
           if (Controller.openSnakeModal) Controller.openSnakeModal();
         });
 
@@ -295,7 +288,7 @@ export const View = {
         label.textContent = this.localized(item, "title");
 
         iconCard.append(iconBox, label);
-        canvas.addEventListener("click", () => {
+        iconCard.addEventListener("click", () => {
           if (Controller.openTetrisModal) Controller.openTetrisModal();
         });
 
@@ -321,7 +314,7 @@ export const View = {
         label.textContent = this.localized(item, "title");
 
         iconCard.append(iconBox, label);
-        canvas.addEventListener("click", () => {
+        iconCard.addEventListener("click", () => {
           if (Controller.openPongModal) Controller.openPongModal();
         });
 
