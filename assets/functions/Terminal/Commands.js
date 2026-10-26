@@ -79,6 +79,16 @@ export const TerminalCommands = {
       infoFocus: "Web apps · Cybersecurity",
       infoLocation: "Madrid, Spain",
       infoUptime: "{minutes} min",
+      desc_scan: "run simulated vulnerability scan",
+      scanStart: "[-] Initializing cybersecurity scanner v2.4...",
+      scanPorts: "[+] Scanning open ports (80, 443, 22, 3306)... SECURE",
+      scanHeaders: "[+] Checking HTTP security headers (CSP, HSTS)... PASSED",
+      scanDeps: "[+] Auditing dependencies... 0 vulnerabilities found",
+      scanDone: "[✔] Target is secure. No critical vectors detected.",
+      scanTarget: "[*] Target: {target}",
+      scanSsl: "[+] SSL/TLS Certificate: Valid (TLS 1.3, ECDSA)... SECURE",
+      scanFuzz: "[+] Fuzzing inputs (XSS/SQLi): 0 vulnerabilities found",
+      scanGrade: "[★] Final Security Score: A+ (Fortified Portfolio)",
     },
     es: {
       welcome: "Victor Reguillo · shell del portfolio (vsh)",
@@ -154,6 +164,21 @@ export const TerminalCommands = {
       infoFocus: "Aplicaciones web · Ciberseguridad",
       infoLocation: "Madrid, España",
       infoUptime: "{minutes} min",
+      desc_scan: "ejecuta un escaneo de vulnerabilidades simulado",
+      desc_theme_editor: "personaliza el color de acento personalizado",
+      scanStart: "[-] Inicializando escáner de ciberseguridad v2.4...",
+      scanPorts: "[+] Escaneando puertos abiertos (80, 443, 22, 3306)... SEGURO",
+      scanHeaders: "[+] Comprobando cabeceras de seguridad HTTP... CORRECTO",
+      scanDeps: "[+] Auditando dependencias... 0 vulnerabilidades encontradas",
+      scanDone: "[✔] Objetivo seguro. No se detectaron vectores críticos.",
+      themeEditorUsage: "uso: theme-editor <hex>|reset",
+      themeEditorReset: "Color de acento restablecido por defecto.",
+      themeEditorInvalid: "Color hex inválido: {arg}. Usa el formato #RRGGBB.",
+      themeEditorApplied: "Color de acento actualizado correctamente a {color}.",
+      scanTarget: "[*] Objetivo: {target}",
+      scanSsl: "[+] Certificado SSL/TLS: Válido (TLS 1.3, ECDSA)... SEGURO",
+      scanFuzz: "[+] Fondeo de entradas (XSS/SQLi): 0 vulnerabilidades halladas",
+      scanGrade: "[★] Puntuación de Seguridad Final: A+ (Portfolio Blindado)",
     },
   },
 
@@ -548,6 +573,26 @@ export const TerminalCommands = {
       run(ctx) {
         ctx.print(TerminalCommands.t("matrixHint"), "accent");
         ctx.matrix();
+      },
+    },
+
+    scan: {
+      usage: "scan [target]",
+      run(ctx) {
+        const T = TerminalCommands;
+        const target = ctx.args[0] || "v1r3.dev";
+        const steps = [
+          { text: T.t("scanTarget", { target }), kind: "dim", wait: 200 },
+          { text: T.t("scanStart"), kind: "dim", wait: 300 },
+          { text: T.t("scanPorts"), kind: "default", wait: 400 },
+          { text: T.t("scanSsl"), kind: "default", wait: 400 },
+          { text: T.t("scanHeaders"), kind: "default", wait: 400 },
+          { text: T.t("scanDeps"), kind: "default", wait: 400 },
+          { text: T.t("scanFuzz"), kind: "default", wait: 400 },
+          { text: T.t("scanDone"), kind: "accent", wait: 300 },
+          { text: T.t("scanGrade"), kind: "accent", wait: 0 },
+        ];
+        ctx.play(steps);
       },
     },
 

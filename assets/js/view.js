@@ -236,7 +236,7 @@ export const View = {
         label.textContent = this.localized(item, "title");
 
         iconCard.append(iconBox, label);
-        canvas.addEventListener("click", () => {
+        iconCard.addEventListener("click", () => {
           if (Controller.openMinesweeperModal) Controller.openMinesweeperModal();
         });
 
@@ -262,7 +262,7 @@ export const View = {
         label.textContent = this.localized(item, "title");
 
         iconCard.append(iconBox, label);
-        canvas.addEventListener("click", () => {
+        iconCard.addEventListener("click", () => {
           if (Controller.openSnakeModal) Controller.openSnakeModal();
         });
 
@@ -288,7 +288,7 @@ export const View = {
         label.textContent = this.localized(item, "title");
 
         iconCard.append(iconBox, label);
-        canvas.addEventListener("click", () => {
+        iconCard.addEventListener("click", () => {
           if (Controller.openTetrisModal) Controller.openTetrisModal();
         });
 
@@ -314,7 +314,7 @@ export const View = {
         label.textContent = this.localized(item, "title");
 
         iconCard.append(iconBox, label);
-        canvas.addEventListener("click", () => {
+        iconCard.addEventListener("click", () => {
           if (Controller.openPongModal) Controller.openPongModal();
         });
 

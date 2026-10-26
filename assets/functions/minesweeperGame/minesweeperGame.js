@@ -56,9 +56,9 @@ Object.assign(Controller, {
             <button class="minesweeper-close-btn" type="button">×</button>
           </div>
           <div class="minesweeper-toolbar">
-            <div class="minesweeper-stat" id="ms-mines">💣 10</div>
-            <button class="minesweeper-face-btn" id="ms-face">😊</button>
-            <div class="minesweeper-stat" id="ms-time">⏱️ 000</div>
+            <div class="minesweeper-stat" id="ms-mines">M: 10</div>
+            <button class="minesweeper-face-btn" id="ms-face">[OK]</button>
+            <div class="minesweeper-stat" id="ms-time">T: 000</div>
           </div>
           <div class="minesweeper-settings">
             <div class="ms-setting-row">
@@ -185,20 +185,20 @@ Object.assign(Controller, {
       timerId = setInterval(() => {
         seconds++;
         if (seconds > 999) seconds = 999;
-        timeEl.textContent = `⏱️ ${String(seconds).padStart(3, '0')}`;
+        timeEl.textContent = `T: ${String(seconds).padStart(3, '0')}`;
       }, 1000);
     };
 
     const resetGame = () => {
       stopTimer();
       seconds = 0;
-      timeEl.textContent = "⏱️ 000";
+      timeEl.textContent = "T: 000";
       gameOver = false;
       gameWon = false;
       firstClick = true;
       flagsCount = 0;
-      faceBtn.textContent = "😊";
-      minesEl.textContent = `💣 ${totalMines - flagsCount}`;
+      faceBtn.textContent = "[OK]";
+      minesEl.textContent = `M: ${totalMines - flagsCount}`;
 
       board = [];
       for (let r = 0; r < rows; r++) {
@@ -270,14 +270,14 @@ Object.assign(Controller, {
             cellEl.classList.add("revealed");
             if (cellData.mine) {
               cellEl.classList.add("mine");
-              cellEl.textContent = "💣";
+              cellEl.textContent = "[X]";
             } else if (cellData.count > 0) {
               cellEl.textContent = cellData.count;
               cellEl.dataset.count = cellData.count;
             }
           } else if (cellData.flagged) {
             cellEl.classList.add("flagged");
-            cellEl.textContent = "🚩";
+            cellEl.textContent = "[F]";
           }
 
           cellEl.addEventListener("click", () => {
@@ -295,7 +295,7 @@ Object.assign(Controller, {
             if (gameOver || gameWon || cellData.revealed) return;
             cellData.flagged = !cellData.flagged;
             flagsCount += cellData.flagged ? 1 : -1;
-            minesEl.textContent = `💣 ${totalMines - flagsCount}`;
+            minesEl.textContent = `M: ${totalMines - flagsCount}`;
             renderBoard();
           });
 
@@ -313,7 +313,7 @@ Object.assign(Controller, {
       if (cell.mine) {
         gameOver = true;
         stopTimer();
-        faceBtn.textContent = "💀";
+        faceBtn.textContent = "[X]";
         revealAllMines();
         renderBoard();
         return;
@@ -362,7 +362,7 @@ Object.assign(Controller, {
       if (won) {
         gameWon = true;
         stopTimer();
-        faceBtn.textContent = "😎";
+        faceBtn.textContent = "[WIN]";
       }
     };
 

@@ -209,11 +209,15 @@
 }
 
 .snake-stats {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 0.8rem;
   color: var(--green);
+  background: var(--panel);
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--line);
 }
 
 .snake-game-canvas-wrap {

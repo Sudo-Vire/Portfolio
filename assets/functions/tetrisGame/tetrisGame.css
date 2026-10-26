@@ -51,7 +51,7 @@
 .tetris-close-btn {
   background: none;
   border: 1px solid var(--line);
-  color: var(--ink);
+  color: var(--paper);
   width: 28px;
   height: 28px;
   cursor: pointer;
@@ -75,8 +75,8 @@
   justify-content: space-between;
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--ink);
-  background: var(--ink);
+  color: var(--cyan);
+  background: var(--panel);
   padding: 0.5rem 0.75rem;
   border: 1px solid var(--line);
 }

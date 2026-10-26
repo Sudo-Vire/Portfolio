@@ -67,29 +67,29 @@ Object.assign(View, {
         <div class="pong-modal-container">
           <div class="pong-header">
             <h3 class="pong-title" id="pong-modal-title">CYBER PONG</h3>
-            <button class="pong-close-btn" type="button">�</button>
+            <button class="pong-close-btn" type="button">X</button>
           </div>
           <div class="pong-mode-selector">
-            <button class="pong-mode-btn is-active" data-mode="vs_ai">1J vs IA</button>
+            <button class="pong-mode-btn is-active" data-mode="vs_ai">1J vs CPU</button>
             <button class="pong-mode-btn" data-mode="2p">2 JUGADORES</button>
           </div>
           <div class="pong-diff-selector" id="pong-diff-container">
-            <button class="pong-diff-btn" data-diff="easy">F�CIL</button>
-            <button class="pong-diff-btn is-active" data-diff="medium">MEDIO</button>
-            <button class="pong-diff-btn" data-diff="hard">DIF�CIL</button>
+            <button class="pong-diff-btn" data-diff="easy">EASY</button>
+            <button class="pong-diff-btn is-active" data-diff="medium">MEDIUM</button>
+            <button class="pong-diff-btn" data-diff="hard">HARD</button>
             <button class="pong-diff-btn" data-diff="impossible">IMPOSIBLE</button>
           </div>
           <div class="pong-stats">
             <span id="pong-p1-score">PLAYER 1: 0</span>
-            <span id="pong-p2-score">AI: 0</span>
+            <span id="pong-p2-score">CPU: 0</span>
           </div>
           <div class="pong-game-canvas-wrap">
             <canvas class="pong-canvas" id="pong-game-canvas" width="480" height="300"></canvas>
           </div>
-          <p class="pong-controls-hint" id="pong-controls-hint">P1: W / S | P2: AI | SPACE: PAUSE</p>
+          <p class="pong-controls-hint" id="pong-controls-hint">P1: W / S | P2: CPU | SPACE: PAUSE</p>
           <div class="pong-touch-pad" id="pong-touch-pad">
-            <button class="pong-touch-btn" data-action="up">? P1 UP</button>
-            <button class="pong-touch-btn" data-action="down">? P1 DOWN</button>
+            <button class="pong-touch-btn" data-action="up">UP</button>
+            <button class="pong-touch-btn" data-action="down">DOWN</button>
           </div>
         </div>
       `;
@@ -185,7 +185,7 @@ Object.assign(View, {
       if (gameMode === "vs_ai") {
         titleEl.textContent = "CYBER PONG // VS AI";
         diffContainer.classList.remove("is-hidden");
-        controlsHintEl.textContent = "P1: W / S | P2: AI | SPACE: PAUSE";
+        controlsHintEl.textContent = "P1: W / S | P2: CPU | SPACE: PAUSE";
       } else {
         titleEl.textContent = "CYBER PONG // 2 PLAYERS";
         diffContainer.classList.add("is-hidden");
