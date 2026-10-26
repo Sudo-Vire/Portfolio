@@ -183,7 +183,7 @@ Object.assign(View, {
     this.pongSetMode = (mode) => {
       gameMode = mode;
       if (gameMode === "vs_ai") {
-        titleEl.textContent = "CYBER PONG // VS AI";
+        titleEl.textContent = "CYBER PONG // VS CPU";
         diffContainer.classList.remove("is-hidden");
         controlsHintEl.textContent = "P1: W / S | P2: CPU | SPACE: PAUSE";
       } else {
@@ -203,7 +203,7 @@ Object.assign(View, {
       p1Score = 0;
       p2Score = 0;
       p1ScoreEl.textContent = `PLAYER 1: ${p1Score}`;
-      p2ScoreEl.textContent = gameMode === "vs_ai" ? `AI: ${p2Score}` : `PLAYER 2: ${p2Score}`;
+      p2ScoreEl.textContent = gameMode === "vs_ai" ? `CPU: ${p2Score}` : `PLAYER 2: ${p2Score}`;
       resetBall();
       isPaused = false;
       gameOver = false;
@@ -307,7 +307,7 @@ Object.assign(View, {
 
       if (ball.x < 0) {
         p2Score++;
-        p2ScoreEl.textContent = gameMode === "vs_ai" ? `AI: ${p2Score}` : `PLAYER 2: ${p2Score}`;
+        p2ScoreEl.textContent = gameMode === "vs_ai" ? `CPU: ${p2Score}` : `PLAYER 2: ${p2Score}`;
         if (p2Score >= 5) {
           gameOver = true;
         } else {
@@ -354,7 +354,7 @@ Object.assign(View, {
       if (gameOver) {
         ctx.fillStyle = "rgba(9, 11, 10, 0.85)";
         ctx.fillRect(0, 0, WIDTH, HEIGHT);
-        let winText = p1Score >= 5 ? "PLAYER 1 WINS" : (gameMode === "vs_ai" ? "AI WINS // DEFEAT" : "PLAYER 2 WINS");
+        let winText = p1Score >= 5 ? "PLAYER 1 WINS" : (gameMode === "vs_ai" ? "CPU WINS // DEFEAT" : "PLAYER 2 WINS");
         ctx.fillStyle = p1Score >= 5 ? "#20ef4f" : "#ff2244";
         ctx.font = "bold 18px monospace";
         ctx.textAlign = "center";
