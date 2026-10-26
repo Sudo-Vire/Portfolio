@@ -1,8 +1,4 @@
-import { Model } from '../../js/model.js';
-import { View } from '../../js/view.js';
-import { TerminalCommands } from './Commands.js';
-
-export const TerminalFS = {
+window.TerminalFS = {
   slug(text) {
     return text.toLowerCase().replace(/['’]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   },

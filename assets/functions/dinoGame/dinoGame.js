@@ -1,7 +1,5 @@
-import { Model } from '../../js/model.js';
-
 // Offline-dino style runner for the 404 page. Colours follow the active portfolio theme.
-export const DinoGame = (() => {
+const DinoGame = (() => {
   const canvas = document.getElementById("dino-canvas");
   if (!canvas) return;
   const ctx = canvas.getContext("2d");

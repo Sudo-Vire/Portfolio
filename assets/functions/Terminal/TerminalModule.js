@@ -1,9 +1,4 @@
-import { TerminalApp } from './Logic.js';
-import { TerminalCommands } from './Commands.js';
-import { TerminalFS } from './Filesystem.js';
-import { TerminalEffects } from './Effects.js';
-
-export const TerminalModule = {
+window.TerminalModule = {
   TerminalApp,
   TerminalCommands,
   TerminalFS,

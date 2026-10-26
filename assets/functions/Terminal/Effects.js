@@ -1,5 +1,5 @@
 
-export const TerminalEffects = {
+window.TerminalEffects = {
   // Full-panel "digital rain". Returns a function that stops and removes it.
   matrix(panel) {
     const style = getComputedStyle(document.body);

@@ -1,9 +1,4 @@
-import { Model } from '../../js/model.js';
-import { View } from '../../js/view.js';
-import { TerminalFS } from './Filesystem.js';
-import { TerminalEffects } from './Effects.js';
-
-export const TerminalCommands = {
+window.TerminalCommands = {
   messages: {
     en: {
       welcome: "Victor Reguillo · portfolio shell (vsh)",

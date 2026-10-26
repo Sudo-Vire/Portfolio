@@ -1,7 +1,3 @@
-import { Model } from '../../js/model.js';
-import { View } from '../../js/view.js';
-import { Controller } from '../../js/controller.js';
-
 // Contact screen: contact chips, email link and the contact form.
 Object.assign(View, {
   initContact() {
