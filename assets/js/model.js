@@ -1,4 +1,4 @@
-export const Model = {
+window.Model = {
   basePath: "/home/v1r3",
   themes: [
     { id: "hacker", label: "HACKER" },

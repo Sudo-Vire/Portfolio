@@ -1,11 +1,4 @@
-import { Model } from '../../js/model.js';
-import { View } from '../../js/view.js';
-import { Controller } from '../../js/controller.js';
-import { TerminalCommands } from './Commands.js';
-import { TerminalFS } from './Filesystem.js';
-import { TerminalEffects } from './Effects.js';
-
-export const TerminalApp = {
+window.TerminalApp = {
   history: [],
   historyIndex: 0,
   draft: "",

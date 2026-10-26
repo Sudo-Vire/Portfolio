@@ -1,7 +1,3 @@
-import { Model } from '../../../js/model.js';
-import { View } from '../../../js/view.js';
-import { Controller } from '../../../js/controller.js';
-
 // Language orbs: persistence, translation of the page and picker behaviour.
 Object.assign(View, {
   getSavedLanguage() {

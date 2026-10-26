@@ -1,8 +1,5 @@
-import { Model } from './model.js';
-import { View } from './view.js';
-
 // Core controller. Feature modules extend it with Object.assign; main.js calls Controller.init().
-export const Controller = {
+window.Controller = {
   audioUnlocked: false,
 
   init() {

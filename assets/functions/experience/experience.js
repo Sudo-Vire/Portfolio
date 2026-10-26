@@ -1,7 +1,3 @@
-import { Model } from '../../js/model.js';
-import { View } from '../../js/view.js';
-import { Controller } from '../../js/controller.js';
-
 // Experience screen: folder contents rendering and folder routes.
 Object.assign(View, {
   renderExperienceFolder(folderId, animate = true) {

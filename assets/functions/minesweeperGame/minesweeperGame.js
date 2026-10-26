@@ -1,7 +1,3 @@
-﻿import { Model } from '../../js/model.js';
-import { View } from '../../js/view.js';
-import { Controller } from '../../js/controller.js';
-
 Object.assign(View, {
   renderMinesweeperIconAnimation(canvas) {
     const ctx = canvas.getContext("2d");

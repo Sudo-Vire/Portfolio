@@ -1,8 +1,5 @@
-import { Model } from './model.js';
-import { Controller } from './controller.js';
-
 // Core view. Feature modules (orbs, virtualFolders, experience, contact) extend it with Object.assign.
-export const View = {
+window.View = {
   els: {},
   optionIndex: 0,
 

@@ -1,7 +1,3 @@
-import { Model } from '../../js/model.js';
-import { View } from '../../js/view.js';
-import { Controller } from '../../js/controller.js';
-
 // Inject CSS
 if (typeof document !== "undefined" && !document.getElementById("tetris-style")) {
   const link = document.createElement("link");

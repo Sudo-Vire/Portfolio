@@ -1,7 +1,3 @@
-﻿import { Model } from '../../js/model.js';
-import { View } from '../../js/view.js';
-import { Controller } from '../../js/controller.js';
-
 // Cyber Snake Game Module & Animated Interactive Icon in Juegos Folder
 Object.assign(View, {
   renderSnakeIconAnimation(canvas) {
