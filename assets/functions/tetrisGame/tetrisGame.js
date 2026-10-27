@@ -77,8 +77,10 @@ Object.assign(View, {
   },
 
   openTetrisModal() {
+    let isNew = false;
     let overlay = document.querySelector(".tetris-modal-overlay");
     if (!overlay) {
+      isNew = true;
       overlay = document.createElement("div");
       overlay.className = "tetris-modal-overlay";
       overlay.innerHTML = `
@@ -116,7 +118,11 @@ Object.assign(View, {
       this.initTetrisEngine(overlay);
     }
     overlay.classList.add("is-active");
-    if (this.tetrisReset) this.tetrisReset();
+    if (isNew) {
+      if (this.tetrisReset) this.tetrisReset();
+    } else {
+      if (this.tetrisResume) this.tetrisResume();
+    }
   },
 
   closeTetrisModal() {
@@ -381,6 +387,17 @@ Object.assign(View, {
 
     this.tetrisPause = () => {
       isPaused = true;
+    };
+
+    this.tetrisResume = () => {
+      if (!gameOver) {
+        isPaused = false;
+        lastTime = performance.now();
+        requestAnimationFrame(update);
+      } else {
+        this.tetrisReset();
+        requestAnimationFrame(update);
+      }
     };
 
     const handleKey = (e) => {
